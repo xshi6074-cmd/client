@@ -11,13 +11,18 @@ export type State = {
    * current state of the sidebar, but tracks whether it has ever been open
    */
   sidebarHasOpened: boolean;
+  floatingAnnotationTag: string | null;
 };
 
 const initialState: State = {
   sidebarHasOpened: false,
+  floatingAnnotationTag: null,
 };
 
 const reducers = {
+  SET_FLOATING_ANNOTATION(_state: State, action: { tag: string | null }) {
+    return { floatingAnnotationTag: action.tag };
+  },
   SET_SIDEBAR_OPENED(state: State, action: { opened: boolean }) {
     if (action.opened === true) {
       // If the sidebar is open, track that it has ever been opened
@@ -36,13 +41,23 @@ function hasSidebarOpened(state: State) {
   return state.sidebarHasOpened;
 }
 
+function setFloatingAnnotation(tag: string | null) {
+  return makeAction(reducers, 'SET_FLOATING_ANNOTATION', { tag });
+}
+
+function floatingAnnotationTag(state: State) {
+  return state.floatingAnnotationTag;
+}
+
 export const viewerModule = createStoreModule(initialState, {
   namespace: 'viewer',
   reducers,
   actionCreators: {
     setSidebarOpened,
+    setFloatingAnnotation,
   },
   selectors: {
     hasSidebarOpened,
+    floatingAnnotationTag,
   },
 });

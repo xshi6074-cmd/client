@@ -179,6 +179,55 @@ host page. See shadow-root.ts for more details.
     @apply sidebar-collapsed:sidebar-transition-visibility;
   }
 
+  .floating-editor-drag-handle {
+    display: none;
+  }
+
+  .sidebar-container.sidebar-floating-editor {
+    top: var(--floating-editor-top, 8px);
+    left: var(--floating-editor-left, 8px);
+    display: grid;
+    grid-template-rows: 18px minmax(0, 1fr) 12px;
+    width: 340px;
+    height: 226px;
+    min-width: min(240px, calc(100vw - 16px));
+    min-height: min(160px, calc(100vh - 16px));
+    max-width: calc(100vw - var(--floating-editor-left, 8px) - 8px);
+    max-height: calc(100vh - var(--floating-editor-top, 8px) - 8px);
+    margin: 0;
+    overflow: hidden;
+    resize: both;
+    transition: none;
+    border: 1px solid #c9cbd4;
+    border-radius: 16px;
+    background: #f0eff5;
+    box-shadow: 0 8px 26px rgb(32 33 36 / 22%);
+    color-scheme: light;
+
+    > :not(.floating-editor-drag-handle, .sidebar-frame) {
+      display: none;
+    }
+
+    .floating-editor-drag-handle {
+      display: grid;
+      place-items: center;
+      cursor: grab;
+      touch-action: none;
+
+      &::before {
+        content: '';
+        width: 32px;
+        height: 4px;
+        border-radius: 99px;
+        background: #a4a6b0;
+      }
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+  }
+
   /* This disables the width transition for the sidebar when
      it is manually resized by dragging. */
   .sidebar-no-transition {

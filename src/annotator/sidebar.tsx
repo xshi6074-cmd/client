@@ -35,6 +35,7 @@ import { createShadowRoot } from './util/shadow-root';
 
 // Minimum width to which the iframeContainer can be resized.
 export const MIN_RESIZE = 280;
+const FLOATING_MARGIN = 8;
 
 /**
  * Client configuration used to launch the sidebar application.
@@ -116,6 +117,7 @@ export class Sidebar implements Destroyable {
   private _messagesElement: HTMLElement | undefined;
   private _toolbarWidth: number;
   private _renderFrame: number | undefined;
+  private _dockedWidth: string | null = null;
 
   /**
    * Tracks which `Guest` has a text selection. `null` indicates to default to
@@ -324,6 +326,7 @@ export class Sidebar implements Destroyable {
     }
 
     this._listeners = new ListenerCollection();
+    this._setupFloatingEditorDrag();
 
     if (this.iframeContainer) {
       // If using our own container frame for the sidebar, infer the width from
@@ -493,6 +496,13 @@ export class Sidebar implements Destroyable {
         this.iframeContainer.style.display = '';
       }
 
+      this._sidebarRPC.call(
+        'setFloatingEditorAvailable',
+        !!this.iframeContainer &&
+          !this._config.services?.length &&
+          !this._config.commentsMode,
+      );
+
       const showHighlights = this._config.showHighlights === 'always';
       this.setHighlightsVisible(showHighlights);
 
@@ -511,6 +521,8 @@ export class Sidebar implements Destroyable {
     );
 
     this._sidebarRPC.on('openSidebar', () => this.open());
+
+    this._sidebarRPC.on('openFloatingEditor', () => this._openFloatingEditor());
 
     this._sidebarRPC.on('closeSidebar', () => this.close());
 
@@ -664,6 +676,11 @@ export class Sidebar implements Destroyable {
    * loading).
    */
   _onResize() {
+    if (this._dockedWidth !== null && this.iframeContainer) {
+      const { left, top } = this.iframeContainer.getBoundingClientRect();
+      this._positionFloatingEditor(left, top);
+      return;
+    }
     if (!this.toolbar.sidebarOpen) {
       return;
     }
@@ -672,6 +689,90 @@ export class Sidebar implements Destroyable {
       this.close();
     } else {
       this.open();
+    }
+  }
+
+  private _setupFloatingEditorDrag() {
+    const frame = this.iframeContainer;
+    if (!frame) {
+      return;
+    }
+
+    const handle = document.createElement('div');
+    handle.className = 'floating-editor-drag-handle';
+    handle.title = 'Drag annotation window';
+    handle.setAttribute('aria-hidden', 'true');
+    frame.insertBefore(handle, this.iframe);
+
+    let drag: { pointerId: number; offsetX: number; offsetY: number } | null =
+      null;
+    this._listeners.add(handle, 'pointerdown', event => {
+      if (event.button !== 0 || drag) {
+        return;
+      }
+      const { left, top } = frame.getBoundingClientRect();
+      drag = {
+        pointerId: event.pointerId,
+        offsetX: event.clientX - left,
+        offsetY: event.clientY - top,
+      };
+      handle.setPointerCapture(event.pointerId);
+      event.preventDefault();
+    });
+    this._listeners.add(handle, 'pointermove', event => {
+      if (drag?.pointerId === event.pointerId) {
+        this._positionFloatingEditor(
+          event.clientX - drag.offsetX,
+          event.clientY - drag.offsetY,
+        );
+      }
+    });
+    this._listeners.add(handle, 'lostpointercapture', () => {
+      drag = null;
+    });
+  }
+
+  private _positionFloatingEditor(x: number, y: number) {
+    const frame = this.iframeContainer!;
+    const limit = (value: number, viewport: number, size: number) =>
+      Math.max(
+        FLOATING_MARGIN,
+        Math.min(value, viewport - size - FLOATING_MARGIN),
+      );
+    frame.style.setProperty(
+      '--floating-editor-left',
+      `${limit(x, window.innerWidth, frame.offsetWidth)}px`,
+    );
+    frame.style.setProperty(
+      '--floating-editor-top',
+      `${limit(y, window.innerHeight, frame.offsetHeight)}px`,
+    );
+  }
+
+  private _openFloatingEditor() {
+    const frame = this.iframeContainer;
+    if (frame && this._dockedWidth === null) {
+      this._dockedWidth = frame.style.width;
+      this._resetDragResizeState();
+      frame.style.width = '';
+      frame.style.marginLeft = '';
+      frame.classList.remove('sidebar-collapsed');
+      frame.classList.add('sidebar-floating-editor');
+      this._positionFloatingEditor(window.innerWidth - 400, 48);
+      this.toolbar.sidebarOpen = false;
+      this._updateLayoutState(false);
+    }
+  }
+
+  private _restoreDockedSidebar() {
+    const frame = this.iframeContainer;
+    if (frame && this._dockedWidth !== null) {
+      frame.classList.remove('sidebar-floating-editor');
+      frame.style.width = this._dockedWidth;
+      frame.style.height = '';
+      frame.style.removeProperty('--floating-editor-left');
+      frame.style.removeProperty('--floating-editor-top');
+      this._dockedWidth = null;
     }
   }
 
@@ -738,6 +839,7 @@ export class Sidebar implements Destroyable {
   }
 
   open() {
+    this._restoreDockedSidebar();
     this._sidebarRPC.call('sidebarOpened');
 
     if (this.iframeContainer) {
@@ -756,6 +858,7 @@ export class Sidebar implements Destroyable {
   }
 
   close() {
+    this._restoreDockedSidebar();
     this._sidebarRPC.call('sidebarClosed');
 
     if (this.iframeContainer) {

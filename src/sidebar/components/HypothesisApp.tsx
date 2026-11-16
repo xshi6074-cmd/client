@@ -17,6 +17,7 @@ import type { SessionService } from '../services/session';
 import type { ToastMessengerService } from '../services/toast-messenger';
 import { useSidebarStore } from '../store';
 import AnnotationView from './AnnotationView';
+import FloatingAnnotationEditor from './FloatingAnnotationEditor';
 import HelpPanel from './HelpPanel';
 import InstructorSurveyPanel from './InstructorSurveyPanel';
 import NotebookView from './NotebookView';
@@ -62,6 +63,10 @@ function HypothesisApp({
   const isThemeClean = settings.theme === 'clean';
 
   const isSidebar = route === 'sidebar';
+  const floatingTag = store.floatingAnnotationTag();
+  const floatingAnnotation = floatingTag
+    ? store.allAnnotations().find(annotation => annotation.$tag === floatingTag)
+    : undefined;
   // One state drives the survey panel, the blocking of the content below it and
   // the scroll lock that keeps the panel in place.
   const surveyShown = isSidebar && store.isInstructorSurveyPending();
@@ -145,7 +150,7 @@ function HypothesisApp({
     session.logout();
   };
 
-  return (
+  const sidebar = (
     <div
       className={classnames(
         'h-full min-h-full',
@@ -167,6 +172,7 @@ function HypothesisApp({
         },
       )}
       data-testid="hypothesis-app"
+      hidden={isSidebar && !!floatingAnnotation}
       style={backgroundStyle}
     >
       {!isModalRoute && (
@@ -210,6 +216,18 @@ function HypothesisApp({
         )}
       </div>
     </div>
+  );
+
+  return (
+    <>
+      {isSidebar && floatingAnnotation && (
+        <FloatingAnnotationEditor
+          key={floatingTag}
+          annotation={floatingAnnotation}
+        />
+      )}
+      {sidebar}
+    </>
   );
 }
 

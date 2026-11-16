@@ -168,6 +168,7 @@ describe('FrameSyncService', () => {
         },
 
         findIDsForTags: sinon.stub().returns([]),
+        floatingAnnotationTag: sinon.stub().returns(null),
         focusedGroup: sinon.stub().returns({ id: 'foobar' }),
         getFocusFilters: sinon.stub().returns({}),
         hoverAnnotations: sinon.stub(),
@@ -178,6 +179,7 @@ describe('FrameSyncService', () => {
         selectAnnotations: sinon.stub(),
         selectTab: sinon.stub(),
         setAnnotationFocusRequest: sinon.stub(),
+        setFloatingAnnotation: sinon.stub(),
         setSidebarOpened: sinon.stub(),
         toggleSelectedAnnotations: sinon.stub(),
         updateAnchorStatus: sinon.stub(),
@@ -670,6 +672,24 @@ describe('FrameSyncService', () => {
         emitGuestEvent('createAnnotation', { $tag: 't1', target: [] });
 
         assert.calledWith(hostRPC().call, 'openSidebar');
+      });
+
+      it('keeps text annotations out of the docked sidebar when floating is available', () => {
+        fakeStore.isLoggedIn.returns(true);
+        emitHostEvent('setFloatingEditorAvailable', true);
+        const annotation = {
+          $tag: 'selected-text',
+          target: [
+            { selector: [{ type: 'TextQuoteSelector', exact: 'Quote' }] },
+          ],
+        };
+
+        emitGuestEvent('createAnnotation', annotation);
+
+        assert.calledWith(fakeAnnotationsService.create, annotation);
+        assert.calledWith(fakeStore.setFloatingAnnotation, 'selected-text');
+        assert.calledWith(hostRPC().call, 'openFloatingEditor');
+        assert.neverCalledWith(hostRPC().call, 'openSidebar');
       });
 
       it('does not open the sidebar if the annotation is a highlight', () => {

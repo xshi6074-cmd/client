@@ -194,6 +194,8 @@ export type HostToGuestCalls = CommonCalls & {
 
 /** Calls that the host makes to the sidebar. */
 export type HostToSidebarCalls = {
+  /** Whether the host can display the sidebar iframe as a floating editor. */
+  setFloatingEditorAvailable(available: boolean): void;
   /** Highlights have been toggled on/off. */
   setHighlightsVisible(visible: boolean): void;
   /** Notify the sidebar iframe that it has become visible. */
@@ -272,6 +274,8 @@ export type SidebarToGuestCalls = {
 
 /** Calls that the sidebar makes to the host. */
 export type SidebarToHostCalls = CommonCalls & {
+  /** Display the sidebar iframe as a floating editor. */
+  openFloatingEditor(): void;
   /**
    * Request from the sidebar iframe to close (ie. hide/move offscreen) its
    * container in the host frame.

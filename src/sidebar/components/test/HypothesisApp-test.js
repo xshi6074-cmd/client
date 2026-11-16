@@ -54,6 +54,7 @@ describe('HypothesisApp', () => {
         },
       }),
       route: sinon.stub().returns('sidebar'),
+      floatingAnnotationTag: sinon.stub().returns(null),
       isInstructorSurveyPending: sinon.stub().returns(false),
 
       getLink: sinon.stub(),

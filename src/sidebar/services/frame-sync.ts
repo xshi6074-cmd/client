@@ -177,6 +177,7 @@ export class FrameSyncService {
 
   /** Indicates if the sidebar is currently open or closed */
   private _sidebarIsOpen: boolean;
+  private _floatingEditorAvailable = false;
 
   // Test seam
   private _window: Window;
@@ -442,11 +443,27 @@ export class FrameSyncService {
         return;
       }
 
+      const useFloatingEditor =
+        this._floatingEditorAvailable &&
+        !annot.$highlight &&
+        annot.target.some(target =>
+          target.selector?.some(
+            selector => selector.type === 'TextQuoteSelector',
+          ),
+        );
+
+      if (useFloatingEditor && this._store.floatingAnnotationTag()) {
+        // Keep the current draft intact if a second selection is annotated.
+        guestRPC.call('deleteAnnotation', annot.$tag);
+        this._hostRPC.call('openFloatingEditor');
+        return;
+      }
+
       this._inFrame.add(annot.$tag);
 
       // Open the sidebar so that the user can immediately edit the draft
       // annotation.
-      if (!annot.$highlight) {
+      if (!annot.$highlight && !useFloatingEditor) {
         this._hostRPC.call('openSidebar');
       }
 
@@ -457,6 +474,12 @@ export class FrameSyncService {
 
       // Create the new annotation in the sidebar.
       this._annotationsService.create(annot);
+
+      if (useFloatingEditor) {
+        this._sidebarIsOpen = false;
+        this._store.setFloatingAnnotation(annot.$tag);
+        this._hostRPC.call('openFloatingEditor');
+      }
     });
 
     // Anchoring an annotation in the frame completed
@@ -551,12 +574,17 @@ export class FrameSyncService {
    * Listen for messages coming from the host frame.
    */
   private _setupHostEvents() {
+    this._hostRPC.on('setFloatingEditorAvailable', available => {
+      this._floatingEditorAvailable = available;
+    });
     this._hostRPC.on('sidebarOpened', () => {
       this._sidebarIsOpen = true;
       this._store.setSidebarOpened(true);
+      this._store.setFloatingAnnotation(null);
     });
     this._hostRPC.on('sidebarClosed', () => {
       this._sidebarIsOpen = false;
+      this._store.setFloatingAnnotation(null);
     });
 
     // When user toggles the highlight visibility control in the sidebar container,
