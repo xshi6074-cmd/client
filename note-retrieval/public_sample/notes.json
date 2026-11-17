@@ -1,0 +1,420 @@
+{
+  "format_version": 1,
+  "captured_at": "2026-11-17T06:43:38.297957+00:00",
+  "source": "hypothesis_api",
+  "access": "public",
+  "scope": {
+    "user": "acct:judell@hypothes.is"
+  },
+  "limit": 15,
+  "first_search_total": 3874,
+  "count": 15,
+  "notes": [
+    {
+      "id": "--MlqvWkEea7BA-05H-Xng",
+      "summary": "On Jan. 16, 2016, Expedition 46 Commander Scott Kelly shared photographs of a blooming zinnia flower in the Veggie plant growth system aboard the International Space Station. Kelly wrote, \"Yes, there are other life forms in space! #SpaceFlower #YearInSpace\"",
+      "quotes": [
+        "On Jan. 16, 2016, Expedition 46 Commander Scott Kelly shared photographs of a blooming zinnia flower in the Veggie plant growth system aboard the International Space Station. Kelly wrote, \"Yes, there are other life forms in space! #SpaceFlower #YearInSpace\""
+      ],
+      "comment": "",
+      "source": {
+        "uri": "https://www.nasa.gov/image-feature/first-flower-grown-in-space-stations-veggie-facility",
+        "title": "First Flower Grown in Space Station's Veggie Facility",
+        "in_context": "https://hyp.is/--MlqvWkEea7BA-05H-Xng/www.nasa.gov/image-feature/first-flower-grown-in-space-stations-veggie-facility",
+        "annotation_url": "https://hypothes.is/a/--MlqvWkEea7BA-05H-Xng",
+        "target_uris": [
+          "https://www.nasa.gov/image-feature/first-flower-grown-in-space-stations-veggie-facility"
+        ],
+        "selector_types": [
+          "FragmentSelector",
+          "RangeSelector",
+          "TextPositionSelector",
+          "TextQuoteSelector"
+        ]
+      },
+      "created": "2017-02-18T06:39:22.985445+00:00",
+      "updated": "2017-02-18T06:39:22.985445+00:00",
+      "user": "acct:judell@hypothes.is",
+      "group": "__world__",
+      "references": [],
+      "hypothesis_tags": [
+        "OtherThingsThatHappenedIn2016"
+      ]
+    },
+    {
+      "id": "-2Nf9vkiEeutNyvDAG7Z6g",
+      "summary": null,
+      "quotes": [],
+      "comment": "Hypothesis API wrapper test 3219099",
+      "source": {
+        "uri": "http://www.example.com",
+        "title": "Example Domain",
+        "in_context": "https://hyp.is/-2Nf9vkiEeutNyvDAG7Z6g/www.example.com",
+        "annotation_url": "https://hypothes.is/a/-2Nf9vkiEeutNyvDAG7Z6g",
+        "target_uris": [
+          "http://www.example.com"
+        ],
+        "selector_types": []
+      },
+      "created": "2021-08-09T15:03:40.662527+00:00",
+      "updated": "2021-08-09T15:03:40.662527+00:00",
+      "user": "acct:judell@hypothes.is",
+      "group": "__world__",
+      "references": [],
+      "hypothesis_tags": [
+        "HypothesisTest",
+        "3219099"
+      ]
+    },
+    {
+      "id": "-2XKLh47Ss2mrgtdi_4jWw",
+      "summary": "TABLE 14Percent of justi\u001d  able homicides",
+      "quotes": [
+        "TABLE 14Percent of justi\u001d  able homicides"
+      ],
+      "comment": "Correlate this with FIgure 4 in [http://www.bjs.gov/content/pub/pdf/ph98.pdf](http://jonudell.net/data/htus8008.pdf)",
+      "source": {
+        "uri": "http://www.bjs.gov/content/pub/pdf/htus8008.pdf",
+        "title": "htus8008.indd",
+        "in_context": "https://hyp.is/-2XKLh47Ss2mrgtdi_4jWw/www.bjs.gov/content/pub/pdf/htus8008.pdf",
+        "annotation_url": "https://hypothes.is/a/-2XKLh47Ss2mrgtdi_4jWw",
+        "target_uris": [
+          "http://www.bjs.gov/content/pub/pdf/htus8008.pdf"
+        ],
+        "selector_types": [
+          "TextPositionSelector",
+          "TextQuoteSelector"
+        ]
+      },
+      "created": "2015-09-29T21:40:42.160245+00:00",
+      "updated": "2015-09-30T17:48:46.014401+00:00",
+      "user": "acct:judell@hypothes.is",
+      "group": "__world__",
+      "references": [],
+      "hypothesis_tags": [
+        "police_homicide"
+      ]
+    },
+    {
+      "id": "-2aXrqcHRrSn1ZMaSxWxHg",
+      "summary": "higgledy-piggledy",
+      "quotes": [
+        "higgledy-piggledy"
+      ],
+      "comment": "there's a word i need to use more often",
+      "source": {
+        "uri": "http://jakehartnell.github.io/HypothesisReader/",
+        "title": "\nMoby-Dick",
+        "in_context": "https://hyp.is/-2aXrqcHRrSn1ZMaSxWxHg/jakehartnell.github.io/HypothesisReader/",
+        "annotation_url": "https://hypothes.is/a/-2aXrqcHRrSn1ZMaSxWxHg",
+        "target_uris": [
+          "http://jakehartnell.github.io/HypothesisReader/"
+        ],
+        "selector_types": [
+          "RangeSelector",
+          "TextPositionSelector",
+          "TextQuoteSelector"
+        ]
+      },
+      "created": "2015-11-05T22:03:07.279901+00:00",
+      "updated": "2015-11-05T22:03:07.279915+00:00",
+      "user": "acct:judell@hypothes.is",
+      "group": "__world__",
+      "references": [],
+      "hypothesis_tags": []
+    },
+    {
+      "id": "-2bGkNUaEea98xdNgM5X0A",
+      "summary": null,
+      "quotes": [],
+      "comment": "Sat Jan 07 2017 12:49:11 GMT-0800 (Pacific Standard Time)",
+      "source": {
+        "uri": "http://www.worldcat.org/title/lost-tycoon-the-many-lives-of-donald-j-trump/oclc/26855431",
+        "title": "The lost tycoon : the many lives of Donald J. Trump (Book, 1993) [WorldCat.org]",
+        "in_context": "https://hyp.is/-2bGkNUaEea98xdNgM5X0A/www.worldcat.org/title/lost-tycoon-the-many-lives-of-donald-j-trump/oclc/26855431",
+        "annotation_url": "https://hypothes.is/a/-2bGkNUaEea98xdNgM5X0A",
+        "target_uris": [
+          "http://www.worldcat.org/title/lost-tycoon-the-many-lives-of-donald-j-trump/oclc/26855431"
+        ],
+        "selector_types": []
+      },
+      "created": "2017-01-07T20:50:54.479071+00:00",
+      "updated": "2017-01-07T20:50:54.479071+00:00",
+      "user": "acct:judell@hypothes.is",
+      "group": "__world__",
+      "references": [],
+      "hypothesis_tags": [
+        "digipo:date:1993-01-01"
+      ]
+    },
+    {
+      "id": "-5Y7kw-9SPujzuaIIDsQyg",
+      "summary": "Other element would receive the click:",
+      "quotes": [
+        "Other element would receive the click:"
+      ],
+      "comment": "This is the Tumblr z-index issue: fix in the pipeline.",
+      "source": {
+        "uri": "http://jonudell.net/h/selenium/20150514T2153.html",
+        "title": null,
+        "in_context": "https://hyp.is/-5Y7kw-9SPujzuaIIDsQyg/jonudell.net/h/selenium/20150514T2153.html",
+        "annotation_url": "https://hypothes.is/a/-5Y7kw-9SPujzuaIIDsQyg",
+        "target_uris": [
+          "http://jonudell.net/h/selenium/20150514T2153.html"
+        ],
+        "selector_types": [
+          "RangeSelector",
+          "TextPositionSelector",
+          "TextQuoteSelector",
+          "FragmentSelector"
+        ]
+      },
+      "created": "2015-05-15T18:40:08.359122+00:00",
+      "updated": "2015-05-15T18:47:01.196177+00:00",
+      "user": "acct:judell@hypothes.is",
+      "group": "__world__",
+      "references": [],
+      "hypothesis_tags": [
+        "selenium",
+        "hypothesis"
+      ]
+    },
+    {
+      "id": "-6VX5HBJEemWzfsfHsmwlA",
+      "summary": null,
+      "quotes": [],
+      "comment": "\"In the 15 months since eLife introduced the system\" -- where \"the system\" means eLife's single signon integration with Hypothesis",
+      "source": {
+        "uri": "https://www.nature.com/articles/d41586-019-01427-9",
+        "title": "Web annotation tool Hypothesis hits a milestone",
+        "in_context": "https://hyp.is/8tMzcHArEem-B5vZsgBj0Q/www.nature.com/articles/d41586-019-01427-9",
+        "annotation_url": "https://hypothes.is/a/-6VX5HBJEemWzfsfHsmwlA",
+        "target_uris": [
+          "https://www.nature.com/articles/d41586-019-01427-9"
+        ],
+        "selector_types": []
+      },
+      "created": "2019-05-06T21:57:46.805964+00:00",
+      "updated": "2019-05-06T21:57:46.805964+00:00",
+      "user": "acct:judell@hypothes.is",
+      "group": "__world__",
+      "references": [
+        "8tMzcHArEem-B5vZsgBj0Q",
+        "occI2nA6Eem-DbNJ5Ql9Og"
+      ],
+      "hypothesis_tags": []
+    },
+    {
+      "id": "-6k14tYjEeeZ6oeicRSMcg",
+      "summary": null,
+      "quotes": [],
+      "comment": "extra",
+      "source": {
+        "uri": "http://jonudell.net/h/t10.html",
+        "title": null,
+        "in_context": "https://hyp.is/-6k14tYjEeeZ6oeicRSMcg/jonudell.net/h/t10.html",
+        "annotation_url": "https://hypothes.is/a/-6k14tYjEeeZ6oeicRSMcg",
+        "target_uris": [
+          "http://jonudell.net/h/t10.html"
+        ],
+        "selector_types": []
+      },
+      "created": "2017-11-30T23:12:49.211173+00:00",
+      "updated": "2017-11-30T23:12:49.211173+00:00",
+      "user": "acct:judell@hypothes.is",
+      "group": "__world__",
+      "references": [],
+      "hypothesis_tags": []
+    },
+    {
+      "id": "-8JxdLyTEeaWsc-NqHtNQQ",
+      "summary": null,
+      "quotes": [],
+      "comment": "test",
+      "source": {
+        "uri": "https://github.com/hypothesis?page=2",
+        "title": "Hypothesis",
+        "in_context": "https://hyp.is/-8JxdLyTEeaWsc-NqHtNQQ/github.com/hypothesis?page=2",
+        "annotation_url": "https://hypothes.is/a/-8JxdLyTEeaWsc-NqHtNQQ",
+        "target_uris": [
+          "https://github.com/hypothesis?page=2"
+        ],
+        "selector_types": []
+      },
+      "created": "2016-12-07T15:44:05.023115+00:00",
+      "updated": "2016-12-07T15:44:05.023115+00:00",
+      "user": "acct:judell@hypothes.is",
+      "group": "__world__",
+      "references": [],
+      "hypothesis_tags": []
+    },
+    {
+      "id": "-92wXL-TEeee_H8lAQZq4A",
+      "summary": "In this talk, Michio Kaku will explore how the use of virtual reality, augmented reality, and the Internet can revolutionize education around the world.",
+      "quotes": [
+        "In this talk, Michio Kaku will explore how the use of virtual reality, augmented reality, and the Internet can revolutionize education around the world."
+      ],
+      "comment": "I dunno, I'm not an educator, but these don't seem like priorities to me.",
+      "source": {
+        "uri": "https://events.educause.edu/annual-conference/2017/agenda/the-next-20-years-in-education-and-technology",
+        "title": "The Next 20 Years in Education and Technology - Sponsored by EAB",
+        "in_context": "https://hyp.is/-92wXL-TEeee_H8lAQZq4A/events.educause.edu/annual-conference/2017/agenda/the-next-20-years-in-education-and-technology",
+        "annotation_url": "https://hypothes.is/a/-92wXL-TEeee_H8lAQZq4A",
+        "target_uris": [
+          "https://events.educause.edu/annual-conference/2017/agenda/the-next-20-years-in-education-and-technology"
+        ],
+        "selector_types": [
+          "RangeSelector",
+          "TextPositionSelector",
+          "TextQuoteSelector"
+        ]
+      },
+      "created": "2017-11-02T06:06:36.372407+00:00",
+      "updated": "2017-11-02T06:22:41.187817+00:00",
+      "user": "acct:judell@hypothes.is",
+      "group": "__world__",
+      "references": [],
+      "hypothesis_tags": [
+        "edu17"
+      ]
+    },
+    {
+      "id": "-BkT8mDMEeugc6vcuRJxbg",
+      "summary": null,
+      "quotes": [],
+      "comment": "Either. You can put `user:UserName` into the search box to filter down to your (or another user's) annotations.",
+      "source": {
+        "uri": "https://web.hypothes.is/help/introduction-to-the-hypothesis-lms-app-for-students/",
+        "title": "Annotating the law | Hypothes.is",
+        "in_context": "https://hyp.is/I9xmPmDHEeuLNFuwiw5t8w/web.hypothes.is/help/introduction-to-the-hypothesis-lms-app-for-students/",
+        "annotation_url": "https://hypothes.is/a/-BkT8mDMEeugc6vcuRJxbg",
+        "target_uris": [
+          "https://web.hypothes.is/help/introduction-to-the-hypothesis-lms-app-for-students/"
+        ],
+        "selector_types": []
+      },
+      "created": "2021-01-27T18:25:01.628642+00:00",
+      "updated": "2021-01-27T18:25:13.508785+00:00",
+      "user": "acct:judell@hypothes.is",
+      "group": "__world__",
+      "references": [
+        "I9xmPmDHEeuLNFuwiw5t8w"
+      ],
+      "hypothesis_tags": []
+    },
+    {
+      "id": "-FXYXNF3EeatRS9at_GU-A",
+      "summary": null,
+      "quotes": [],
+      "comment": "",
+      "source": {
+        "uri": "http://archive.li/Cs2m8",
+        "title": "Funding Our Work in 2014 – your donation sought | Principia Scientifi…",
+        "in_context": "https://hyp.is/-FXYXNF3EeatRS9at_GU-A/archive.li/Cs2m8",
+        "annotation_url": "https://hypothes.is/a/-FXYXNF3EeatRS9at_GU-A",
+        "target_uris": [
+          "http://archive.li/Cs2m8"
+        ],
+        "selector_types": []
+      },
+      "created": "2017-01-03T05:46:27.855766+00:00",
+      "updated": "2017-01-03T05:46:27.855766+00:00",
+      "user": "acct:judell@hypothes.is",
+      "group": "__world__",
+      "references": [],
+      "hypothesis_tags": [
+        "digipo:source"
+      ]
+    },
+    {
+      "id": "-GzjaLBqEea7o8t-PpE-yg",
+      "summary": "Charles Doyle of the University of Georgia, my coauthor on the forthcoming Yale Book of Modern Proverbs, has found that this expression is now commonly applied to economic or diplomatic crises that can be exploited to advance political agendas, but he traced it back at least as far as 1976, when M. F. Weiner wrote an article in the journal Medical Economics entitled “Don’t Waste a Crisis — Your Patient’s or Your Own.” Weiner meant by this that a medical crisis can be used to improve aspects of personality, mental health, or lifestyle.",
+      "quotes": [
+        "Charles Doyle of the University of Georgia, my coauthor on the forthcoming Yale Book of Modern Proverbs, has found that this expression is now commonly applied to economic or diplomatic crises that can be exploited to advance political agendas, but he traced it back at least as far as 1976, when M. F. Weiner wrote an article in the journal Medical Economics entitled “Don’t Waste a Crisis — Your Patient’s or Your Own.” Weiner meant by this that a medical crisis can be used to improve aspects of personality, mental health, or lifestyle."
+      ],
+      "comment": "",
+      "source": {
+        "uri": "http://freakonomics.com/2009/08/13/quotes-uncovered-who-said-no-crisis-should-go-to-waste/",
+        "title": "Quotes Uncovered: Who Said No Crisis Should Go to Waste? - Freakonomics",
+        "in_context": "https://hyp.is/-GzjaLBqEea7o8t-PpE-yg/freakonomics.com/2009/08/13/quotes-uncovered-who-said-no-crisis-should-go-to-waste/",
+        "annotation_url": "https://hypothes.is/a/-GzjaLBqEea7o8t-PpE-yg",
+        "target_uris": [
+          "http://freakonomics.com/2009/08/13/quotes-uncovered-who-said-no-crisis-should-go-to-waste/"
+        ],
+        "selector_types": [
+          "RangeSelector",
+          "TextPositionSelector",
+          "TextQuoteSelector"
+        ]
+      },
+      "created": "2016-11-22T04:20:16.121155+00:00",
+      "updated": "2016-11-22T04:20:16.121155+00:00",
+      "user": "acct:judell@hypothes.is",
+      "group": "__world__",
+      "references": [],
+      "hypothesis_tags": [
+        "NeverLetAGoodCrisisGoToWaste"
+      ]
+    },
+    {
+      "id": "-H08oq0VQpGZdP8mwzwUSA",
+      "summary": "t may be said of a natural space modified in order to serve the needs and possibilities of a group that it has been appropriated by that group. Property in the sense of possession is at best a necessary precondition, and most often merely an epiphenomenon, of “appropriative” activity, the highest expression of which is the work of art",
+      "quotes": [
+        "t may be said of a natural space modified in order to serve the needs and possibilities of a group that it has been appropriated by that group. Property in the sense of possession is at best a necessary precondition, and most often merely an epiphenomenon, of “appropriative” activity, the highest expression of which is the work of art"
+      ],
+      "comment": "Discuss please? Their lips move but I cannot hear what they are saying",
+      "source": {
+        "uri": "urn:x-pdf:cf6ba25f61aac48a4e3f0db485f23",
+        "title": "Occupy: a new pedagogy of space and time",
+        "in_context": "https://hyp.is/-H08oq0VQpGZdP8mwzwUSA/www.jceps.com/wp-content/uploads/PDFs/10-2-03.pdf#",
+        "annotation_url": "https://hypothes.is/a/-H08oq0VQpGZdP8mwzwUSA",
+        "target_uris": [
+          "urn:x-pdf:cf6ba25f61aac48a4e3f0db485f23"
+        ],
+        "selector_types": [
+          "RangeSelector",
+          "TextPositionSelector",
+          "TextQuoteSelector",
+          "FragmentSelector"
+        ]
+      },
+      "created": "2015-06-03T00:16:06.954119+00:00",
+      "updated": "2015-06-03T00:16:06.954150+00:00",
+      "user": "acct:judell@hypothes.is",
+      "group": "__world__",
+      "references": [],
+      "hypothesis_tags": [
+        "mdvfunes",
+        "TJC15"
+      ]
+    },
+    {
+      "id": "-HCgJx9UR4KkpP13z-PYXw",
+      "summary": "In this study, we focus on examining: (1) whether spatial patterns of the hemodynamic response carry sufficient information to allow reliable decoding of \"Yes/No\" thoughts;",
+      "quotes": [
+        "In this study, we focus on examining: (1) whether spatial patterns of the hemodynamic response carry sufficient information to allow reliable decoding of \"Yes/No\" thoughts;"
+      ],
+      "comment": "In other words: fMRI lie detection.",
+      "source": {
+        "uri": "http://www.ncbi.nlm.nih.gov/m/pubmed/24844742/",
+        "title": "Using fMRI to decode true thoughts independent of intention to conceal. - PubMed - NCBI",
+        "in_context": "https://hyp.is/-HCgJx9UR4KkpP13z-PYXw/www.ncbi.nlm.nih.gov/m/pubmed/24844742/",
+        "annotation_url": "https://hypothes.is/a/-HCgJx9UR4KkpP13z-PYXw",
+        "target_uris": [
+          "http://www.ncbi.nlm.nih.gov/m/pubmed/24844742/"
+        ],
+        "selector_types": [
+          "RangeSelector",
+          "TextQuoteSelector",
+          "FragmentSelector"
+        ]
+      },
+      "created": "2015-05-03T18:14:48.781822+00:00",
+      "updated": "2015-05-03T18:14:48.781837+00:00",
+      "user": "acct:judell@hypothes.is",
+      "group": "__world__",
+      "references": [],
+      "hypothesis_tags": []
+    }
+  ]
+}

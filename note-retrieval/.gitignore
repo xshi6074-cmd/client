@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+snapshots/
+notes.json
+tags.json
+*.lock
+.env
