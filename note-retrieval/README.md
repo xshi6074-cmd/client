@@ -43,26 +43,19 @@ python3 hypothesis_tags.py read-tag TAG_ID --notes notes.json --index tags.json 
 
 更换 API、模型、prompt 或影响结果的预算参数时，用新索引路径保存对照。查询时同时提供当前笔记和标签文件，已删除和已改写的旧标签会被排除。未经模型处理的笔记计为待处理，已经处理但无可用标签的笔记可以返回空标签列表。
 
-GitHub Actions 可将它接在 `sync` 之后。每轮先从私有存储取上一版索引用于续跑，然后发布新版笔记和该轮索引。在查询端拿到这两个文件即可查看词表和原文，无需模型 API key。排程应串行运行同一索引的写入，配置首次执行前先用公开样本检查这两个文件能否从目标 Work 环境读回。
+处理个人批注时，可在独立私有仓库的 GitHub Actions 中将它接在 `sync` 之后。每轮先从私有存储取上一版索引用于续跑，然后发布新版笔记和该轮索引。在查询端拿到这两个文件即可查看词表和原文，无需模型 API key。排程应串行运行同一索引的写入，配置首次执行前先用公开样本检查这两个文件能否从目标 Work 环境读回。
 
 **当前验证** 端到端通过本地 Chat Completions 模拟服务，覆盖调用预算、可追溯依据、标签复用、失败续跑、笔记改写和移除，以及按标签回读原文。个人笔记与真实模型的标签质量、实际 token 用量、云端定时发布与 Work 读取待验。
 
 ## 用真实账号端到端测试
 
-GitHub Actions 的 `Note retrieval live smoke test` 在 `floating-annotation-editor` 分支上验证真实同步、打标、按标签回读以及重复运行时的缓存命中。每次最多向模型发送三条批注的划线和评论。它优先从最近十条中选择有正文、合计不超过 2000 字符的批注。日志只含计数、模型返回的 token 用量和必要的错误状态。
+公开 fork 使用公开样本。个人批注实测放在私有运行环境，例如独立私有仓库的 GitHub Actions。把 `HYPOTHESIS_API_TOKEN` 与 `NOTE_TAG_API_KEY` 通过该运行环境的 secrets 注入，并配置 `NOTE_TAG_API_URL` 和 `NOTE_TAG_MODEL`。
 
-在仓库 **Settings → Environments → note-retrieval-e2e** 中配置下列值。可将环境允许的部署分支设为 `floating-annotation-editor`。
+```sh
+python3 note-retrieval/hypothesis_e2e.py
+```
 
-| 类型 | 名称 | 值 |
-| --- | --- | --- |
-| Secret | `HYPOTHESIS_API_TOKEN` | 在 [Hypothesis 开发者页面](https://hypothes.is/account/developer) 中取得 |
-| Secret | `NOTE_TAG_API_KEY` | 所选模型服务的 API key |
-| Variable | `NOTE_TAG_API_URL` | 模型服务完整的 HTTPS Chat Completions URL |
-| Variable | `NOTE_TAG_MODEL` | 模型名 |
-| Variable（可选） | `HYPOTHESIS_E2E_URI` | 只使用指定文档的批注 |
-| Variable（可选） | `NOTE_TAG_OUTPUT_TOKEN_FIELD` | 默认为 `max_tokens`，也支持 `max_completion_tokens` |
-
-配置完成后，可在 Actions 中对该测试的失败运行选择 **Re-run failed jobs**。`pending` 或 `failed` 表示尚未通过实测。已有这组环境变量的 Linux 环境也可直接执行 `python3 note-retrieval/hypothesis_e2e.py`。
+脚本验证真实同步、打标、按标签回读和重复运行时的缓存命中。可通过 `HYPOTHESIS_E2E_URI` 限定到指定文档。脚本从最近十条批注中选出最多三条，将合计不超过 2000 字符的划线和评论发给所配置的模型服务。服务要求 `max_completion_tokens` 时，可传 `--output-token-field max_completion_tokens`。脚本在临时目录中处理批注，输出计数、模型报告的 token 用量和必要的错误状态。
 
 ## 拉取自己的批注
 
