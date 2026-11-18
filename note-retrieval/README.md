@@ -47,6 +47,23 @@ GitHub Actions 可将它接在 `sync` 之后。每轮先从私有存储取上一
 
 **当前验证** 端到端通过本地 Chat Completions 模拟服务，覆盖调用预算、可追溯依据、标签复用、失败续跑、笔记改写和移除，以及按标签回读原文。个人笔记与真实模型的标签质量、实际 token 用量、云端定时发布与 Work 读取待验。
 
+## 用真实账号端到端测试
+
+GitHub Actions 的 `Note retrieval live smoke test` 在 `floating-annotation-editor` 分支上验证真实同步、打标、按标签回读以及重复运行时的缓存命中。每次最多向模型发送三条批注的划线和评论。它优先从最近十条中选择有正文、合计不超过 2000 字符的批注。日志只含计数、模型返回的 token 用量和必要的错误状态。
+
+在仓库 **Settings → Environments → note-retrieval-e2e** 中配置下列值。可将环境允许的部署分支设为 `floating-annotation-editor`。
+
+| 类型 | 名称 | 值 |
+| --- | --- | --- |
+| Secret | `HYPOTHESIS_API_TOKEN` | 在 [Hypothesis 开发者页面](https://hypothes.is/account/developer) 中取得 |
+| Secret | `NOTE_TAG_API_KEY` | 所选模型服务的 API key |
+| Variable | `NOTE_TAG_API_URL` | 模型服务完整的 HTTPS Chat Completions URL |
+| Variable | `NOTE_TAG_MODEL` | 模型名 |
+| Variable（可选） | `HYPOTHESIS_E2E_URI` | 只使用指定文档的批注 |
+| Variable（可选） | `NOTE_TAG_OUTPUT_TOKEN_FIELD` | 默认为 `max_tokens`，也支持 `max_completion_tokens` |
+
+配置完成后，可在 Actions 中对该测试的失败运行选择 **Re-run failed jobs**。`pending` 或 `failed` 表示尚未通过实测。已有这组环境变量的 Linux 环境也可直接执行 `python3 note-retrieval/hypothesis_e2e.py`。
+
 ## 拉取自己的批注
 
 在 [Hypothesis 开发者页面](https://hypothes.is/account/developer) 取得 API token。运行下列命令后，在终端提示处输入 token。也可在运行环境配置 `HYPOTHESIS_API_TOKEN`，并省略 `--prompt-token`。
